@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تسجيل المسؤول عن المريض</title>
+    <link rel="stylesheet" href="signupAll.css">
+    <style>
+        /* إضافة بعض التنسيقات لتحسين التفاعل */
+        .qr-section {
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .qr-section:hover {
+            border-color: #2980b9 !important;
+            background: #e1f0ff !important;
+        }
+        .scan-btn {
+            cursor: pointer;
+            border: none;
+            color: white;
+            border-radius: 8px;
+            transition: background 0.3s;
+        }
+        .scan-btn:active {
+            transform: scale(0.95);
+        }
+    </style>
+</head>
+<body>
+    <form>
+        <h3>الارتباط بملف المريض</h3>
+        
+        <div class="qr-section" id="drop-area" style="text-align: center; background: #f0f7ff; padding: 20px; border-radius: 15px; margin-bottom: 20px; border: 2px dashed #3498db;">
+            <p style="font-size: 0.9rem; color: #2980b9; margin-bottom: 10px;">قم بمسح الـ QR Code من ملف المريض لربط الحساب فوراً</p>
+            
+            <div class="qr-placeholder" id="qr-result" style="width: 120px; height: 120px; background: white; margin: 0 auto 15px; display: flex; align-items: center; justify-content: center; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+                <span style="font-size: 3rem;">🔳</span>
+            </div>
+            
+            <button type="button" class="scan-btn" id="activate-camera" style="background: #3498db; width: auto; padding: 8px 20px; font-size: 0.9rem;">
+                فتح الكاميرا للمسح 📷
+            </button>
+            
+            <input type="file" id="camera-input" accept="image/*" capture="camera" style="display: none;">
+        </div>
+
+        <hr>
+
+        <h3>معلومات المسؤول (الولي/المرافق)</h3>
+        
+        <label>الاسم الكامل للمسؤول</label>
+        <input type="text" placeholder="أدخل اسمك الكامل" required>
+
+        <div style="display: flex; gap: 15px;">
+            <div style="flex: 1;">
+                <label>صلة القرابة بالمريض</label>
+                <select name="relation" required>
+                    <option value="" disabled selected>اختر الصلة</option>
+                    <option value="father">الأب</option>
+                    <option value="mother">الأم</option>
+                    <option value="son">الابن</option>
+                    <option value="daughter">الابنة</option>
+                    <option value="spouse">الزوج / الزوجة</option>
+                    <option value="brother">الأخ</option>
+                    <option value="sister">الأخت</option>
+                    <option value="legal_guardian">ولي أمر شرعي</option>
+                </select>
+            </div>
+            <div style="flex: 1;">
+                <label>رقم هاتف المسؤول</label>
+                <input type="tel" maxlength="10" placeholder="0XXXXXXXXX" required>
+            </div>
+        </div>
+
+        <label>رقم التعريف الوطني (للمسؤول)</label>
+        <input type="number" placeholder="أدخل رقم بطاقة تعريف المسؤول" required>
+
+        <hr>
+
+        <h3>معلومات الدخول</h3>
+        <label>البريد الإلكتروني</label>
+        <input type="email" placeholder="example@mail.com" required>
+
+        <label>كلمة المرور</label>
+        <input type="password" placeholder="كلمة المرور" required>
+
+        <br><br>
+        <button type="submit" style="background: linear-gradient(135deg, #2980b9 0%, #3498db 100%);">تأكيد الربط والتسجيل</button>
+    </form>
+
+    <script>
+        const btn = document.getElementById('activate-camera');
+        const input = document.getElementById('camera-input');
+        const section = document.getElementById('drop-area');
+        const resultIcon = document.querySelector('#qr-result span');
+
+        // عند الضغط على الزر أو المنطقة الزرقاء
+        [btn, section].forEach(el => {
+            el.addEventListener('click', (e) => {
+                // منع التكرار إذا تم الضغط على الزر داخل القسم
+                if (e.target === input) return;
+                input.click();
+            });
+        });
+
+      
+        input.addEventListener('change', function() {
+            if (this.files && this.files[0]) {
+                resultIcon.innerHTML = "✅"; 
+                resultIcon.style.color = "#2ecc71";
+                alert("تم التقاط الكود! يمكنك الآن إكمال عملية التسجيل.");
+            }
+        });
+    </script>
+</body>
+</html>

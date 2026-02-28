@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>يُسر كرونيك - YocerChronic</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Tajawal', 'Segoe UI', sans-serif;
+        }
+body {
+    min-height: 100vh;
+    background: linear-gradient(
+        135deg,
+        #f8fbff 0%,
+        #eef5ff 40%,
+        #e8f6f0 100%
+    );
+    color: #2c3e50;
+    line-height: 1.6;
+}
+
+        .container {
+            max-width: 1100px;
+            margin: auto;
+            padding: 40px 20px;
+        }
+
+        /* ===== الهيدر: مستوحى من شكل الـ Form ===== */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #ffffff;
+            padding: 20px 35px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            margin-bottom: 50px;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid #edf2f7;
+        }
+
+        /* الخط الملون العلوي كما في الفورم */
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(to right, #3498db, #2ecc71);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #3498db;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .logo i {
+            color: #ef476f; /* لون القلب */
+        }
+
+        .actions {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn {
+            padding: 10px 25px;
+            border-radius: 12px;
+            border: none;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-search {
+            background: #e8f0fe; /* لون حقول الإدخال في الفورم */
+            color: #366da3;
+        }
+
+        .btn-login {
+            /* تدرج الزر الرئيسي في الفورم */
+            background: linear-gradient(135deg, #3498db 0%, #2ecc71 100%);
+            color: #ffffff;
+            box-shadow: 0 5px 15px rgba(46, 204, 113, 0.2);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            filter: brightness(1.05);
+        }
+
+        /* ===== العنوان الرئيسي ===== */
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 2rem;
+            color: #2c3e50;
+            font-weight: 700;
+        }
+
+        /* ===== كروت الأمراض المزمنة ===== */
+        .disease-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .disease-card {
+            background: #ffffff;
+            padding: 40px 30px;
+            border-radius: 25px; /* نفس انحناء الفورم */
+            text-align: center;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.03);
+            transition: all 0.3s ease;
+            border: 1px solid #edf2f7;
+        }
+
+        .disease-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.06);
+        }
+
+        .disease-card i {
+            font-size: 3.5rem;
+            color: #3498db;
+            margin-bottom: 20px;
+        }
+
+        .disease-card h3 {
+            color: #2c3e50;
+            margin-bottom: 12px;
+            font-size: 1.3rem;
+        }
+
+        .disease-card p {
+            font-size: 0.95rem;
+            color: #64748b;
+        }
+
+        /* ===== قسم المميزات بخلفية الحقول e8f0fe ===== */
+        .features {
+            background: #ffffff;
+            padding: 50px;
+            border-radius: 25px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+            border: 1px solid #edf2f7;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+        }
+
+        .feature {
+            text-align: center;
+        }
+
+        .icon {
+            width: 85px;
+            height: 85px;
+            margin: auto;
+            margin-bottom: 25px;
+            border-radius: 20px;
+            background: #e8f0fe; /* نفس خلفية input في الفورم */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2.2rem;
+            color: #366da3;
+            transition: 0.3s;
+        }
+
+        .feature:hover .icon {
+            background: #3498db;
+            color: #ffffff;
+            transform: scale(1.1);
+        }
+
+        .feature h4 {
+            margin-bottom: 12px;
+            color: #2c3e50;
+            font-size: 1.1rem;
+        }
+
+        .feature p {
+            font-size: 0.9rem;
+            color: #64748b;
+        }
+
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <header>
+        <div class="logo">
+            <i class="fas fa-heart-pulse"></i>
+            <span>يُسر كرونيك / YocerChronic</span>
+        </div>
+
+        <div class="actions">
+            <button class="btn btn-search"><i class="fas fa-search"></i> بحث</button>
+            <button class="btn btn-login" onclick="changepage()">تسجيل الدخول</button>
+        </div>
+    </header>
+
+    <h2 class="section-title">نحن معكم لنيسر عليكم أصعب اللحظات</h2>
+
+    <div class="disease-grid">
+        <div class="disease-card">
+            <i class="fas fa-droplet"></i>
+            <h3>مرض السكري</h3>
+            <p>متابعة دقيقة لمستويات الجلوكوز وتنظيم الوجبات لضمان استقرار حالتك الصحية.</p>
+        </div>
+
+        <div class="disease-card">
+            <i class="fas fa-gauge-high"></i>
+            <h3>ضغط الدم</h3>
+            <p>سجلات يومية ذكية وتنبيهات فورية لمراقبة ضغط الدم والوقاية من المضاعفات.</p>
+        </div>
+
+        <div class="disease-card">
+            <i class="fas fa-heartbeat"></i>
+            <h3>أمراض القلب</h3>
+            <p>دعم متكامل لصحة القلب والأوعية الدموية مع ربط مباشر بملفك الطبي.</p>
+        </div>
+    </div>
+
+    <section class="features">
+        <div class="features-grid">
+            <div class="feature">
+                <div class="icon"><i class="fas fa-user-doctor"></i></div>
+                <h4>أطباء مختصون</h4>
+                <p>استشارات مباشرة وتواصل دائم مع نخبة من الأطباء لمتابعة حالتك.</p>
+            </div>
+
+            <div class="feature">
+                <div class="icon"><i class="fas fa-shield-virus"></i></div>
+                <h4>خصوصية وأمان</h4>
+                <p>بياناتك الصحية محمية ومشفرة بأعلى معايير الأمان العالمية.</p>
+            </div>
+
+            <div class="feature">
+                <div class="icon"><i class="fas fa-clock"></i></div>
+                <h4>متابعة 24/7</h4>
+                <p>نظام تنبيهات ذكي ومتابعة مستمرة لضمان سلامتك في كل وقت.</p>
+            </div>
+        </div>
+    </section>
+
+</div>
+
+<script>
+    function changepage() {
+        window.location.href = 'index.html';
+    }
+</script>
+
+</body>
+</html>

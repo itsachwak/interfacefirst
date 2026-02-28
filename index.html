@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YocerChronic</title>
+    <link rel="stylesheet" href="stype.css">
+</head>
+<body>
+    <!-- start the pic part-->
+     <div class="gallery">
+        <div class="main">
+            <img src="openning.png" >
+        </div>
+        
+        <div class="culom-pic">
+            <img src="doctors.jpg" >
+            <img src="patient.png" >
+            <img src="labo.png" >
+            <img src="pharmacy.png" >
+        </div>
+        <br><br><br><br><br><br><br><br>
+     </div>
+        <!-- end the pic part-->
+         <form>
+
+    <div class="auth-switch">
+        <label>
+            <input type="radio" name="auth" checked onclick="showLogin()">
+            تسجيل دخول
+        </label>
+
+        <label>
+            <input type="radio" name="auth" onclick="showRegister()">
+            اشتراك
+        </label>
+    </div>
+
+    <hr>
+    <br>
+
+    <!-- LOGIN -->
+    <div class="login" id="login">
+        <h2>Welcome to YocerChronic</h2>
+
+        <label>البريد الإلكتروني/رقم الهاتف</label> <br>  <br>
+        <input type="text" placeholder="اسم المستخدم" required> <br> 
+
+        <label>كلمة المرور</label> <br> <br>
+        <input type="password" placeholder="كلمة المرور" required> <br> <br>
+
+        <button type="submit">تسجيل الدخول</button>
+    </div>
+
+    <!-- REGISTER -->
+    <div id="userTypeSelect" style="display: none;">
+        <h2>This account is for</h2>
+
+        <div class="user-types">
+            <label><input type="radio" name="userType" onclick="gotoDoc()"> الطبيب</label>
+            <label><input type="radio" name="userType" onclick="gotoPatient()"> المريض</label>
+            <label><input type="radio" name="userType" onclick="gotoPharmacist()"> الصيدلي</label>
+            <label><input type="radio" name="userType" onclick="gotoLabo()"> المخبري</label>
+            <label><input type="radio" name="userType" onclick="gotoaidmalade()"> المُساعد</label>
+        </div>
+    </div>
+
+</form>
+        <script>
+function showLogin() {
+    document.getElementById('login').style.display = 'block';
+    document.getElementById('userTypeSelect').style.display = 'none';
+}
+
+function showRegister() {
+    document.getElementById('login').style.display = 'none';
+    document.getElementById('userTypeSelect').style.display = 'block';
+}
+
+function gotoDoc() { window.location.href = 'signupDoc.html'; }
+function gotoPatient() { window.location.href = 'signupPatient.html'; }
+function gotoPharmacist() { window.location.href = 'signupPharmacy.html'; }
+function gotoLabo() { window.location.href = 'signupLabor.html'; }
+function gotoaidmalade() { window.location.href = 'signupHelper.html'; }
+</script>
+</body>
+</html>

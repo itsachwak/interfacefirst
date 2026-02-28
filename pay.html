@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YocerChronic - الدفع وتفعيل الاشتراك</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="signupAll.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Tajawal', sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #f8fbff 0%, #eef5ff 40%, #e8f6f0 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        form {
+            background: #ffffff;
+            padding: 40px;
+            border-radius: 25px;
+            width: 100%;
+            max-width: 500px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.05);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid #edf2f7;
+        }
+
+        form::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 6px;
+            background: linear-gradient(to right, #3498db, #2ecc71);
+        }
+
+        h2 { text-align: center; color: #2c3e50; margin-bottom: 25px; font-size: 1.6rem; }
+
+        label { display: block; margin: 10px 5px 5px 0; color: #366da3; font-weight: 600; font-size: 0.9rem; }
+
+        input[type="text"], input[type="email"], input[type="file"] {
+            width: 100%; padding: 14px; margin-bottom: 15px;
+            border: none; background-color: #e8f0fe; border-radius: 12px;
+            font-size: 0.95rem;
+            outline: none;
+        }
+
+        input:focus {
+            box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+        }
+
+        button {
+            width: 100%; padding: 16px;
+            background: linear-gradient(135deg, #3498db 0%, #2ecc71 100%);
+            color: white; border: none; border-radius: 15px;
+            font-size: 1.1rem; font-weight: bold; cursor: pointer;
+            transition: 0.3s; margin-top: 10px;
+            box-shadow: 0 10px 20px rgba(46, 204, 113, 0.2);
+        }
+
+        button:hover { transform: translateY(-2px); filter: brightness(1.1); }
+
+        .pay-notice {
+            padding: 12px; border-radius: 10px; font-size: 0.85rem; margin-bottom: 15px;
+            display: flex; align-items: center; gap: 10px; line-height: 1.4;
+        }
+        .notice-24h { background: #fff9e6; color: #856404; border-right: 4px solid #f1c40f; }
+        .notice-1h { background: #e8f6f0; color: #2ecc71; border-right: 4px solid #2ecc71; }
+
+        .payment-options {
+            display: flex; justify-content: space-around; gap: 10px; 
+            margin: 20px 0; background: #f8fafc; padding: 15px; border-radius: 15px;
+        }
+        
+        .payment-options label { margin: 0; cursor: pointer; display: flex; align-items: center; gap: 8px; }
+
+        hr { border: 0; height: 1px; background: #edf2f7; margin: 20px 0; }
+    </style>
+</head>
+<body>
+
+    <form id="mainForm">
+        <h2>تفعيل العضوية</h2>
+
+        <label><i class="fas fa-user"></i> الاسم الكامل</label>
+        <input type="text" placeholder="أدخل اسمك الكامل" required>
+
+        <label><i class="fas fa-envelope"></i> البريد الإلكتروني</label>
+        <input type="email" placeholder="example@mail.com" required>
+        <p style="font-size: 0.75rem; color: #64748b; margin-top: -10px; margin-bottom: 15px;">
+            * سنقوم بإرسال بيانات الحساب إلى هذا البريد فور التفعيل.
+        </p>
+
+        <hr>
+
+        <label>اختر طريقة الدفع:</label>
+        <div class="payment-options">
+            <label><input type="radio" name="pm" checked onclick="togglePay('off')"> يدوي (إيصال)</label>
+            <label><input type="radio" name="pm" onclick="togglePay('on')"> إلكتروني (فوري)</label>
+        </div>
+
+        <div id="payOffline">
+            <div class="pay-notice notice-24h">
+                <i class="fas fa-clock"></i> التفعيل خلال <b>24 ساعة</b> بعد مراجعة الوصل.
+            </div>
+            <label>صورة وصل التحويل (Receipt)</label>
+            <input type="file" accept="image/*" required>
+            <button type="submit">إرسال وتأكيد الطلب</button>
+        </div>
+
+        <div id="payOnline" style="display:none;">
+            <div class="pay-notice notice-1h">
+                <i class="fas fa-bolt"></i> تفعيل فوري خلال <b>ساعة واحدة</b>.
+            </div>
+            <label>رقم البطاقة الذهبية / CIB</label>
+            <input type="text" placeholder="0000 0000 0000 0000">
+            
+            <div style="display: flex; gap: 10px;">
+                <div style="flex: 2;">
+                    <label>كلمة مرور البطاقة</label>
+                    <input type="password" placeholder="****" maxlength="4" pattern="\d{4}">
+                    <p style="font-size: 0.85rem; color: #ef476f; margin-top: -10px; margin-bottom: 15px; font-weight: 600;">
+                      رجى إدخال الرموز الأربعة (4) الخاصة ببطاقتك الائتمانية 
+                    </p>
+                </div>
+                <div style="flex: 1;">
+                    <label>CVV</label>  <!-- رمز الأمان خلف البطاقة -->
+                    <input type="text" placeholder="123">
+                </div>
+            </div>
+            <button type="submit">إتمام الدفع الفوري</button>
+        </div>
+    </form>
+
+    <script>
+        function togglePay(type) {
+            document.getElementById('payOffline').style.display = (type === 'off') ? 'block' : 'none';
+            document.getElementById('payOnline').style.display = (type === 'on') ? 'block' : 'none';
+            
+            // جعل الحقول مطلوبة فقط في الحالة الظاهرة
+            const fileInput = document.querySelector('input[type="file"]');
+            if(type === 'off') fileInput.setAttribute('required', '');
+            else fileInput.removeAttribute('required');
+        }
+    </script>
+</body>
+</html>

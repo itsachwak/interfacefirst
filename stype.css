@@ -1,0 +1,206 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Roboto, sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    background: linear-gradient(
+        135deg,
+        #f8fbff 0%,
+        #eef5ff 40%,
+        #e8f6f0 100%
+    );
+}
+
+/* ===== Gallery ===== */
+
+.gallery {
+    margin-top: 40px;
+    display: flex;
+    width: 100%;
+    height: 75vh;
+}
+
+.main {
+    flex: 3;
+}
+
+.main img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.culom-pic {
+    display: flex;
+    flex: 2;
+}
+
+.culom-pic img {
+    width: 25%;
+    object-fit: cover;
+    transition: 0.4s;
+}
+
+.culom-pic img:hover {
+    transform: scale(1.1);
+    z-index: 1;
+}
+
+/* ===== Form Section ===== */
+
+
+form {
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 25px; 
+    width: 95%;
+    max-width: 490px;
+    margin-right: 31%;
+    margin-top: 50px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.05);
+    position: relative;
+    overflow: hidden;
+}
+
+form::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 6px;
+    background: linear-gradient(to right, #3498db, #2ecc71);
+}
+
+
+
+/* Top radio switch */
+
+.auth-switch {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 20px;
+}
+
+.auth-switch label {
+    cursor: pointer;
+    font-weight: 600;
+    color: #366da3;
+}
+
+/* Login */
+
+.login h2,
+#userTypeSelect h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #2c3e50;
+}
+
+.login input {
+    width: 100%;
+    padding: 14px;
+    margin-bottom: 20px;
+    border: none;
+    background-color: #e8f0fe;
+    border-radius: 12px;
+}
+
+.login input:focus {
+    outline: none;
+    background-color: #f1f4f8;
+}
+
+/* Button */
+
+.login button {
+    width: 100%;
+    padding: 16px;
+    background: linear-gradient(135deg, #3498db 0%, #2ecc71 100%);
+    color: white;
+    border: none;
+    border-radius: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.login button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 15px 25px rgba(46, 204, 113, 0.3);
+}
+
+/* Register user type */
+
+#userTypeSelect {
+    text-align: center;
+}
+
+.user-types {
+    margin-top: 20px;
+    display: grid;
+    gap: 15px;
+}
+
+.user-types label {
+    background: #e8f0fe;
+    padding: 12px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.user-types label:hover {
+    background: #d6e8ff;
+}
+
+/* ===== Mobile ===== */
+@media (max-width: 768px) {
+
+    .gallery {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .main {
+        width: 100%;
+        height: 300px;
+    }
+
+    .culom-pic {
+        width: 100%;
+        height: 150px;
+    }
+
+    .culom-pic img {
+        width: 25%;
+        height: 100%;
+    }
+
+    form {
+        margin: 40px auto;
+        width: 90%;
+        padding: 30px;
+    }
+
+}
+
+/* ===== Tablet ===== */
+@media (min-width: 769px) and (max-width: 1024px) {
+
+    .gallery {
+        height: 60vh;
+    }
+
+    form {
+        margin: 50px auto;
+        width: 80%;
+    }
+
+}

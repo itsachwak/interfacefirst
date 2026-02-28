@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تسجيل حساب مختبر تحاليل طبية</title>
+    <link rel="stylesheet" href="signupAll.css">
+</head>
+<body>
+    <form>
+        <h3>معلومات المدير والمختبر</h3>
+        
+        <label>اسم البيولوجي المسؤول (المدير)</label>
+        <input type="text" placeholder="الاسم الكامل للمدير التقني" required>
+
+        <label>اسم مختبر التحاليل الطبية</label>
+        <input type="text" placeholder="مثال: مختبر ابن سينا للتحاليل" required>
+
+        <div style="display: flex; gap: 15px;">
+            <div style="flex: 1;">
+                <label>رقم التسجيل المهني</label>
+                <input type="number" placeholder="رقم القيد المهني" required>
+            </div>
+            <div style="flex: 1;">
+                <label>رقم رخصة الاستغلال</label>
+                <input type="number" placeholder="رقم الرخصة الوزارية" required>
+            </div>
+        </div>
+
+        <label>نسخة من اعتماد المختبر (Agrément)</label>
+        <input type="file" accept=".pdf, image/*" required>
+
+        <hr>
+
+        <h3>الموقع والاتصال</h3>
+        
+        <label>الولاية</label>
+         <select name="wilaya" required>
+        <option value="" disabled selected>اختر الولاية</option>
+        <option value="1">01 - أدرار</option>
+        <option value="2">02 - الشلف</option>
+        <option value="3">03 - الأغواط</option>
+        <option value="4">04 - أم البواقي</option>
+        <option value="5">05 - باتنة</option>
+        <option value="6">06 - بجاية</option>
+        <option value="7">07 - بسكرة</option>
+        <option value="8">08 - بشار</option>
+        <option value="9">09 - البليدة</option>
+        <option value="10">10 - البويرة</option>
+        <option value="11">11 - تمنراست</option>
+        <option value="12">12 - تبسة</option>
+        <option value="13">13 - تلمسان</option>
+        <option value="14">14 - تيارت</option>
+        <option value="15">15 - تيزي وزو</option>
+        <option value="16">16 - الجزائر</option>
+        <option value="17">17 - الجلفة</option>
+        <option value="18">18 - جيجل</option>
+        <option value="19">19 - سطيف</option>
+        <option value="20">20 - سعيدة</option>
+        <option value="21">21 - سكيكدة</option>
+        <option value="22">22 - سيدي بلعباس</option>
+        <option value="23">23 - عنابة</option>
+        <option value="24">24 - قالمة</option>
+        <option value="25">25 - قسنطينة</option>
+        <option value="26">26 - المدية</option>
+        <option value="27">27 - مستغانم</option>
+        <option value="28">28 - المسيلة</option>
+        <option value="29">29 - معسكر</option>
+        <option value="30">30 - ورقلة</option>
+        <option value="31">31 - وهران</option>
+        <option value="32">32 - البيض</option>
+        <option value="33">33 - إليزي</option>
+        <option value="34">34 - برج بوعريريج</option>
+        <option value="35">35 - بومرداس</option>
+        <option value="36">36 - الطارف</option>
+        <option value="37">37 - تندوف</option>
+        <option value="38">38 - تسمسيلت</option>
+        <option value="39">39 - الوادي</option>
+        <option value="40">40 - خنشلة</option>
+        <option value="41">41 - سوق أهراس</option>
+        <option value="42">42 - تيبازة</option>
+        <option value="43">43 - ميلة</option>
+        <option value="44">44 - عين الدفلى</option>
+        <option value="45">45 - النعامة</option>
+        <option value="46">46 - عين تموشنت</option>
+        <option value="47">47 - غرداية</option>
+        <option value="48">48 - غليزان</option>
+        <option value="49">49 - تيميمون</option>
+        <option value="50">50 - برج باجي مختار</option>
+        <option value="51">51 - أولاد جلال</option>
+        <option value="52">52 - بني عباس</option>
+        <option value="53">53 - عين صالح</option>
+        <option value="54">54 - عين قزام</option>
+        <option value="55">55 - تقرت</option>
+        <option value="56">56 - جانت</option>
+        <option value="57">57 - المغير</option>
+        <option value="58">58 - المنيعة</option>
+        </select>
+
+        <label>العنوان الدقيق</label>
+        <input type="text" placeholder="البلدية، الشارع، المعالم القريبة" required>
+
+        <label>رقم هاتف المختبر (الأرضي أو المحمول)</label>
+        <input type="tel" maxlength="10" placeholder="0XXXXXXXXX" required>
+
+        <hr>
+
+        <h3>ساعات العمل والخدمات المنزلية</h3>
+        <label>توقيت الاستقبال (لأخذ العينات)</label>
+        <select name="shift" required>
+            <option value="early">صباحي مبكر (من 06:30)</option>
+            <option value="day">عادي (08:00 - 17:00)</option>
+            <option value="24h">مناوب 24/24 ساعة</option>
+        </select>
+
+        <div style="display: flex; align-items: center; gap: 10px; margin-top: 10px; background: #e3f2fd; padding: 10px; border-radius: 8px;">
+            <input type="checkbox" id="home_sampling" name="home_sampling">
+            <label for="home_sampling" style="margin:0; color: #1565c0;">يوفر المختبر خدمة سحب العينات من المنزل 🏠</label>
+        </div>
+
+        <hr>
+
+        <h3>معلومات الدخول</h3>
+        <label>البريد الإلكتروني للمختبر</label>
+        <input type="email" placeholder="labo@example.com" required>
+
+        <label>كلمة المرور</label>
+        <input type="password" placeholder="كلمة المرور" required>
+
+        <br><br>
+        <button type="submit" style="background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);">إنشاء حساب مختبر</button>
+    </form>
+</body>
+</html>
